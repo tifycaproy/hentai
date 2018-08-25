@@ -166,7 +166,7 @@
                 "Falla" => array(
                 "error" => array("Error en validación de datos")
             )</p>
-            <p>Nota: El codigo, es el id de usuario, que se envia codificado como token cuando ingresas a la app, y el id se envia en el json de videos</p>
+            <p>Nota: El codigo, es el id de usuario, cuando ingresas a la app, y el id se envia en el json de videos</p>
           </div>
 
        <div class="col-lg-8 mx-auto">
@@ -180,7 +180,7 @@
                 "Falla" => array(
                 "error" => array("Error en validación de datos")
             )</p>
-            <p>Nota: El codigo, es el id de usuario, que se envia codificado como token cuando ingresas a la app</p>
+            <p>Nota: El codigo, es el id de usuario,  cuando ingresas a la app</p>
           </div>
 
          <div class="col-lg-8 mx-auto">
@@ -194,7 +194,7 @@
                 "Falla" => array(
                 "error" => array("Error en validación de datos")
             )</p>
-            <p>Nota: El codigo, es el id de usuario, que se envia codificado como token cuando ingresas a la app, y el id se envia en el json de videos</p>
+            <p>Nota: El codigo, es el id de usuario,  cuando ingresas a la app, y el id se envia en el json de videos</p>
           </div>
 
       <div class="col-lg-8 mx-auto">
@@ -208,7 +208,7 @@
                 "Falla" => array(
                 "error" => array("Error en validación de datos")
             )</p>
-            <p>Nota: El codigo, es el id de usuario, que se envia codificado como token cuando ingresas a la app, y el id se envia en el json de videos</p>
+            <p>Nota: El codigo, es el id de usuario, que se envia cuando ingresas a la app, y el id se envia en el json de videos</p>
           </div>
 
         <div class="col-lg-8 mx-auto">
@@ -222,7 +222,7 @@
                 "Falla" => array(
                 "error" => array("Error en validación de datos")
             )</p>
-            <p>Nota: El codigo, es el id de usuario, que se envia codificado como token cuando ingresas a la app</p>
+            <p>Nota: El codigo, es el id de usuario, que cuando ingresas a la app</p>
           </div>
 
 
