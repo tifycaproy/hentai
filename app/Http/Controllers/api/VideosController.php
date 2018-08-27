@@ -16,6 +16,31 @@ use App\tarde;
 
 class VideosController extends Controller
 {
+   public function buscar(Request $request)
+  {
+    try{
+      $errors = [];
+      if (!isset($request["idpost"])) $errors[] = "Id is required";
+      if (count($errors) > 0) {
+        return ["status" => "fallo", "error" => $errors];
+      }
+        $idusuario = $request["codigo"];
+        $idpost    = $request["idpost"];
+        $videos =DB::table('wp_postmeta as a')
+                     ->select('a.meta_id','a.post_id','a.meta_key','a.meta_value')
+                     ->where('a.post_id',$idpost)
+                     ->where('a.meta_key', 'like', 'player_0_embed_player')->first();
+                     
+        if($videos) $url = $videos->meta_value;
+        else $url="";
+        return view('videos.layout')->with('url',$url);
+
+    } catch (Exception $e) {
+      return ['status' => 'fallo','error'=>["An error has occurred, try again"]];
+    }
+
+  }
+
   public function consulta_video()
   {
 
