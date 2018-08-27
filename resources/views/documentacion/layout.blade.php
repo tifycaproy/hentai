@@ -68,6 +68,8 @@
               <li><a href="#delete">Eliminar Favoritos</a></li>
               <li><a href="#descarga">Descarga</a></li>
                <li><a href="#historial">Historial</a></li>
+               <li><a href="#ver">Ver más tarde</a></li>
+               <li><a href="#bloqueo">Bloqueo</a></li>
             </ul>
           </div>
         </div>
@@ -225,7 +227,34 @@
             <p>Nota: El codigo, es el id de usuario, que cuando ingresas a la app</p>
           </div>
 
+          <div class="col-lg-8 mx-auto">
+            <h2 id="ver">Ver más Tarde</h2>
+            <p class="lead">Nombre de Endpoint: add_tarde</p>
+            <p class="lead">Ruta:/api/add_tarde</p>
+           <p class="lead">Método => "POST"</p>
+            <p class="lead">Parámetros => array(
+                "codigo" => "integer/ requerido", "id" => "integer/ requerido"),
+                "Éxito" => "token, idusuario, codigo",
+                "Falla" => array(
+                "error" => array("Error en validación de datos")
+            )</p>
+            <p>Nota: El codigo, es el id de usuario, cuando ingresas a la app, y el id se envia en el json de videos</p>
 
+          </div>
+
+
+          <div class="col-lg-8 mx-auto">
+            <h2 id="ver">Bloqueo</h2>
+            <p class="lead">Nombre de Endpoint: bloqueo</p>
+            <p class="lead">Ruta:/api/bloqueo</p>
+           <p class="lead">Método => "POST"</p>
+            <p class="lead">Parámetros => array(
+                "codigo" => "integer/ requerido", "pin_bloqueo" => "integer/ requerido"),
+                "Éxito" => "token, idusuario, codigo",
+                "Falla" => array(
+                "error" => array("Error en validación de datos")
+            )</p>
+          </div>
 
         </div>
       </div>

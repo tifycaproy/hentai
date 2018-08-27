@@ -317,7 +317,32 @@ public function cons_dowl(Request $request)
   }
 }
 
+public function bloqueo(Request $request)
+{
+   try{
+      $errors = [];
+      if (!isset($request["codigo"])) $errors[] = "Codigo is required";
+      if (!isset($request["pin_bloqueo"])) $errors[] = "Pin Locked is required";
+      if (count($errors) > 0) {
+        return ["status" => "fallo", "error" => $errors];
+      }     
+      $pinb      = $request["pin_bloqueo"];
+      $idusuario = $request["codigo"];
+      $usuario = user::where('id',$idusuario)->first();
+      if($usuario){
+          $usuario->pin_bloqueo = $pinb;
+          $usuario->save();
 
+      return ["status" => "exito", "data" => ["token" => crea_token($idusuario), "pin_bloqueo" => $pinb, "codigo" => ($idusuario)]];
 
+      }else{
+     return ['estatus' => 'fallo','error'=>["An error has occurred, try again"]];
+
+      }
+  }catch(Exception $e){
+    return ['estatus' => 'fallo','error'=>["An error has occurred, try again"]];
+  }
+
+}
 
 }
