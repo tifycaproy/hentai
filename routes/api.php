@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('registro', 'api\UsuarioController@registro');
 
 Route::post('ingresar', 'api\UsuarioController@iniciar');
+Route::post('cambiar', 'api\UsuarioController@cambiar');
 Route::post('validar', 'api\UsuarioController@validar_pin');
 Route::get('perfil', 'api\UsuarioController@perfil');
 Route::post('reenviar_pin','api\UsuarioController@reenviar_pin');

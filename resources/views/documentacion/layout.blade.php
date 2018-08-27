@@ -67,9 +67,10 @@
               <li><a href="#consultaf">Consultar Favoritos</a></li>
               <li><a href="#delete">Eliminar Favoritos</a></li>
               <li><a href="#descarga">Descarga</a></li>
-               <li><a href="#historial">Historial</a></li>
-               <li><a href="#ver">Ver más tarde</a></li>
-               <li><a href="#bloqueo">Bloqueo</a></li>
+              <li><a href="#historial">Historial</a></li>
+              <li><a href="#ver">Ver más tarde</a></li>
+              <li><a href="#bloqueo">Bloqueo</a></li>
+              <li><a href="#cambiar">Cambiar Contraseña</a></li>
             </ul>
           </div>
         </div>
@@ -255,6 +256,25 @@
                 "error" => array("Error en validación de datos")
             )</p>
           </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 id="cambiar">Cambiar contraseña</h2>
+            <p class="lead">Nombre de Endpoint: Cambiar</p>
+            <p class="lead">Ruta:/api/cambiar</p>
+            <p class="lead">Método => "POST"</p>
+            <p class="lead">Parámetros => array(
+                "email" => "varchar(100) / requerido / único",
+                "pass_old" => "varchar(20) / requerido",),
+                "pass_new" => "varchar(20) / requerido",),
+                "Éxito" => "token, idusuario, codigo",
+                "Falla" => array(
+                "error" => array("Error en validación de datos", "El email no se encuentra registrado, Password Incorrecto")
+        )</p>
+
+          </div>
+
 
         </div>
       </div>
