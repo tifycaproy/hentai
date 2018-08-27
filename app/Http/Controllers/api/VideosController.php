@@ -61,31 +61,33 @@ class VideosController extends Controller
         ->select('b.term_id as idc', 'b.name as nombre')
         ->where('a.object_id',$video->id)
         ->get();
-
+        $url = $video->meta_value;
+        $descarga = "";
             //preg_match('/src="([^"]+)"/', $video->meta_value, $match);
-        $salida = $video->meta_value;
-        preg_match_all('/<iframe[^>]+src="([^"]+)"/', $salida, $match);
-        $url = $match[1];
-        if($url2){
-          $salida = $url2;
-        preg_match_all('/<iframe[^>]+src="([^"]+)"/', $salida, $match2);
-          $url2 = $match2[1];
-        }
+        //Comentado para prueba 27082018
+        //$salida = $video->meta_value;
+        //preg_match_all('/<iframe[^>]+src="([^"]+)"/', $salida, $match);
+        //$url = $match[1];
+        //if($url2){
+          //$salida = $url2;
+        //preg_match_all('/<iframe[^>]+src="([^"]+)"/', $salida, $match2);
+          //$url2 = $match2[1];
+        //}
        
-        $zurl= $url[0];
-        $buscar = 'animeidhentai.com';
-        if($zurl)
-        {
-          $pos = strpos($zurl, $buscar);
-        }
-        if($pos) $descarga = $zurl;
-        else
-        {
-          $zurl= $url2[0];
-          $pos = strpos($zurl, $buscar);
-          if($pos) $descarga = $zurl;  
-          else $descarga='';          
-        }
+        //$zurl= $url[0];
+        //$buscar = 'animeidhentai.com';
+        //if($zurl)
+        //{
+          //$pos = strpos($zurl, $buscar);
+        //}
+        //if($pos) $descarga = $zurl;
+        //else
+        //{
+          //$zurl= $url2[0];
+          //$pos = strpos($zurl, $buscar);
+          //if($pos) $descarga = $zurl;  
+          //7else $descarga='';          
+        //}
                    //dd($categoria);
         $data[]=[
           'id' => $video->post_id,
