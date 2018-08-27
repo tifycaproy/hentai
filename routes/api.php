@@ -24,6 +24,7 @@ Route::get('perfil', 'api\UsuarioController@perfil');
 Route::post('reenviar_pin','api\UsuarioController@reenviar_pin');
 Route::get('consulta_videos', 'api\VideosController@consulta_video');
 Route::post('add_favorito','api\VideosController@add_favorito');
+Route::post('add_tarde','api\VideosController@add_tarde');
 Route::get('del_favorito','api\VideosController@del_favorito');
 Route::post('add_dowl','api\VideosController@add_dowl');
 Route::get('cons_favorito', 'api\VideosController@cons_favorito');

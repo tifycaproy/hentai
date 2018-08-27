@@ -12,7 +12,7 @@ use DB;
 use App\relacion;
 use App\favorite;
 use App\dowl;
-
+use App\tarde;
 
 class VideosController extends Controller
 {
@@ -66,13 +66,26 @@ class VideosController extends Controller
         $salida = $video->meta_value;
         preg_match_all('/<iframe[^>]+src="([^"]+)"/', $salida, $match);
         $url = $match[1];
-
         if($url2){
           $salida = $url2;
         preg_match_all('/<iframe[^>]+src="([^"]+)"/', $salida, $match2);
           $url2 = $match2[1];
         }
-
+       
+        $zurl= $url[0];
+        $buscar = 'animeidhentai.com';
+        if($zurl)
+        {
+          $pos = strpos($zurl, $buscar);
+        }
+        if($pos) $descarga = $zurl;
+        else
+        {
+          $zurl= $url2[0];
+          $pos = strpos($zurl, $buscar);
+          if($pos) $descarga = $zurl;  
+          else $descarga='';          
+        }
                    //dd($categoria);
         $data[]=[
           'id' => $video->post_id,
@@ -81,6 +94,7 @@ class VideosController extends Controller
           'url' => $url,
           'url2' => $url2,
           'img' => $img,
+          'descarga' => $descarga,
           'capitulo' => $capitulo,
           'categorias' => $categoria
         ];
@@ -268,7 +282,41 @@ public function cons_dowl(Request $request)
 }catch(Exception $e){
   return ['estatus' => 'fallo','error'=>["An error has occurred, try again"]];
 }
+
+
 }
+
+ public function add_tarde(Request $request)
+  {
+    try{
+      $errors = [];
+      if (!isset($request["codigo"])) $errors[] = "Codigo is required";
+      if (!isset($request["id"])) $errors[] = "Id is required";
+
+
+      if (count($errors) > 0) {
+        return ["status" => "fallo", "error" => $errors];
+      }
+      $idusuario = $request["codigo"];
+      $idpost    = $request["id"];
+      $tarde = tarde::where("wp_user_id",$idusuario)->where("wp_post_id",$idpost)->first();
+      if($tarde)
+      {
+       $errors[] = "Already registered";
+       return ["status" => "fallo", "error" => $error];
+     }else{
+      $nuevo             = new favorite($request->all());
+      $nuevo->wp_user_id =  $idusuario;
+      $nuevo->wp_post_id =  $idpost;
+      $nuevo->save();
+      return ["status" => "exito", "data" => ["token" => crea_token($idusuario), "id" => $idpost, "codigo" => ($idusuario)]];
+    }
+
+  }catch(Exception $e){
+    return ['estatus' => 'fallo','error'=>["An error has occurred, try again"]];
+  }
+}
+
 
 
 
