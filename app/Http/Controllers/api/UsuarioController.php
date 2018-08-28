@@ -102,11 +102,13 @@ public function cambiar(Request $request)
       }
                 //fin validaciones
       $email      = $request["email"];
-      $pass = password_hash($request["pass_old"], PASSWORD_DEFAULT);
+      $pass  = $request["pass_old"];
       $passn = password_hash($request["pass_new"], PASSWORD_DEFAULT);
+      
       $usuario = Usuario::where('email', $email)->first();
       if($usuario) {
-        if($usuario->password!=$pass)
+        $resultado= password_verify($pass, $usuario->password);
+        if(!$resultado)
         {
           $errors[] = "Old Password is invalid";
 

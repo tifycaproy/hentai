@@ -86,7 +86,9 @@ class VideosController extends Controller
         $zurl = DB::table('wp_postmeta')->where('post_id',$video->post_id)
         ->where('meta_key','like','player_1_embed_player')->first();
         if($zurl)  
-          { $url2 = $zurl->meta_value;}
+          { $url2 = $zurl->meta_value;
+            $zzurl2 = $url2;
+          }
         else{
           $url2="";
         } 
@@ -98,39 +100,40 @@ class VideosController extends Controller
         ->where('a.object_id',$video->id)
         ->get();
         $url = $video->meta_value;
+        $purl = $url;
         $descarga = "";
-            //preg_match('/src="([^"]+)"/', $video->meta_value, $match);
-        //Comentado para prueba 27082018
-        //$salida = $video->meta_value;
-        //preg_match_all('/<iframe[^>]+src="([^"]+)"/', $salida, $match);
-        //$url = $match[1];
-        //if($url2){
-          //$salida = $url2;
-        //preg_match_all('/<iframe[^>]+src="([^"]+)"/', $salida, $match2);
-          //$url2 = $match2[1];
-        //}
+        preg_match('/src="([^"]+)"/', $video->meta_value, $match);
+        
+        $salida = $video->meta_value;
+        preg_match_all('/<iframe[^>]+src="([^"]+)"/', $salida, $match);
+        $url = $match[1];
+        if($url2){
+          $salida = $url2;
+        preg_match_all('/<iframe[^>]+src="([^"]+)"/', $salida, $match2);
+          $url2 = $match2[1];
+        }
        
-        //$zurl= $url[0];
-        //$buscar = 'animeidhentai.com';
-        //if($zurl)
-        //{
-          //$pos = strpos($zurl, $buscar);
-        //}
-        //if($pos) $descarga = $zurl;
-        //else
-        //{
-          //$zurl= $url2[0];
-          //$pos = strpos($zurl, $buscar);
-          //if($pos) $descarga = $zurl;  
-          //7else $descarga='';          
-        //}
+        $zurl= $url[0];
+        $buscar = 'animeidhentai.com';
+        if($zurl)
+        {
+          $pos = strpos($zurl, $buscar);
+        }
+        if($pos) $descarga = $zurl;
+        else
+        {
+          $zurl= $url2[0];
+          $pos = strpos($zurl, $buscar);
+          if($pos) $descarga = $zurl;  
+          else $descarga='';          
+        }
                    //dd($categoria);
         $data[]=[
           'id' => $video->post_id,
           'titulo' => $video->post_title,
           'descripcion' => $video->post_content,
-          'url' => $url,
-          'url2' => $url2,
+          'url' => $purl,
+          'url2' => $zzurl2,
           'img' => $img,
           'descarga' => $descarga,
           'capitulo' => $capitulo,
