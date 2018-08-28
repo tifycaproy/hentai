@@ -29,7 +29,7 @@ class VideosController extends Controller
         $videos =DB::table('wp_postmeta as a')
                      ->select('a.meta_id','a.post_id','a.meta_key','a.meta_value')
                      ->where('a.post_id',$idpost)
-                     ->where('a.meta_key', 'like', 'player_0_embed_player')->first();
+                     ->where('a.meta_key', 'like', 'player_1_embed_player')->first();
                      
         if($videos) $url = $videos->meta_value;
         else $url="";
