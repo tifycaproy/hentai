@@ -56,18 +56,19 @@ class VideosController extends Controller
   {
 
     try{
+      $fecha = '2017-12-31';
       $zzvideos= DB::table('wp_postmeta as a')
       ->join('wp_posts as b','a.post_id','=','b.ID') 
-      ->select('a.meta_id','a.post_id','a.meta_key','a.meta_value','b.post_title','b.post_status','b.post_name','b.post_content','b.id')
+      ->select('a.meta_id','a.post_id','a.meta_key','a.meta_value','b.post_title','b.post_status','b.post_name','b.post_content','b.id','b.post_date')
       ->where('a.meta_key', 'like', 'player_0_embed_player')
-      ->whereIn('b.id',['16275','19736','19767','19677','18514','18489',' 18490','18500','18503','18022'])
+      ->where('b.post_date','>',$fecha)
       ->whereIn('b.post_status',['publish','inherit'])
       ->orderby('a.post_id')
       //->take('50')
       ->get();         
 
       $data=[];
-      foreach ($zzvideos as $video) {
+      foreach ($zzvideos as $video){
            //obtener la imagen 
         $imagen = DB::table('wp_postmeta')
         ->where('meta_key','like','poster_url')->where('post_id',$video->post_id)->first();
@@ -102,31 +103,31 @@ class VideosController extends Controller
         $url = $video->meta_value;
         $purl = $url;
         $descarga = "";
-        preg_match('/src="([^"]+)"/', $video->meta_value, $match);
+        //preg_match('/src="([^"]+)"/', $video->meta_value, $match);
         
-        $salida = $video->meta_value;
-        preg_match_all('/<iframe[^>]+src="([^"]+)"/', $salida, $match);
-        $url = $match[1];
-        if($url2){
-          $salida = $url2;
-        preg_match_all('/<iframe[^>]+src="([^"]+)"/', $salida, $match2);
-          $url2 = $match2[1];
-        }
-       
-        $zurl= $url[0];
-        $buscar = 'animeidhentai.com';
-        if($zurl)
-        {
-          $pos = strpos($zurl, $buscar);
-        }
-        if($pos) $descarga = $zurl;
-        else
-        {
-          $zurl= $url2[0];
-          $pos = strpos($zurl, $buscar);
-          if($pos) $descarga = $zurl;  
-          else $descarga='';          
-        }
+        //$salida = $video->meta_value;
+        //preg_match_all('/<iframe[^>]+src="([^"]+)"/', $salida, $match);
+        //$url = $match[1];
+        //if($url2){
+          //$salida = $url2;
+        //preg_match_all('/<iframe[^>]+src="([^"]+)"/', $salida, $match2);
+          //$url2 = $match2[1];
+        //}
+        //if(isset($url[0])) $zurl= $url[0];
+
+        //$buscar = 'animeidhentai.com';
+        //if($zurl)
+        //{
+          //$pos = strpos($zurl, $buscar);
+        //}
+        //if($pos) $descarga = $zurl;
+        //else
+        //{
+          //if(isset($url2[0])){ $zurl= $url2[0]; }      
+          //$pos = strpos($zurl, $buscar);
+          //if($pos) $descarga = $zurl;  
+          //else $descarga='';          
+        //}
                    //dd($categoria);
         $data[]=[
           'id' => $video->post_id,
