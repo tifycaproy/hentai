@@ -1,0 +1,1 @@
+<iframe src="https://ksplayer.com/plugins/mediaplayer/site/_embed.php?u=41f6571a5143466e&w=640&h=556" frameborder="0" scrolling="no" style="width: 640px; height: 596px; overflow: hidden;" webkitAllowFullScreen="true" mozallowfullscreen="true" allowFullScreen="true"></iframe>
