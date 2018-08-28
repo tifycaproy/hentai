@@ -18,6 +18,7 @@ class VideosController extends Controller
 {
    public function buscar($idpost)
   {
+
     try{
       $errors = [];
       if (!isset($idpost)) $errors[] = "Id is required";
@@ -33,7 +34,17 @@ class VideosController extends Controller
                      
         if($videos) $url = $videos->meta_value;
         else $url="";
-        return view('videos.layout')->with('url',$url);
+
+        $zvideos =DB::table('wp_postmeta as a')
+                     ->select('a.meta_id','a.post_id','a.meta_key','a.meta_value')
+                     ->where('a.post_id',$idpost)
+                     ->where('a.meta_key', 'like', 'player_0_embed_player')->first();
+                     
+        if($zvideos) $zurl = $zvideos->meta_value;
+        else $zurl="";
+
+
+        return view('videos.layout')->with('url',$url)->with('zurl',$zurl);
 
     } catch (Exception $e) {
       return ['status' => 'fallo','error'=>["An error has occurred, try again"]];
