@@ -16,16 +16,16 @@ use App\tarde;
 
 class VideosController extends Controller
 {
-   public function buscar(Request $request)
+   public function buscar($idpost)
   {
     try{
       $errors = [];
-      if (!isset($request["idpost"])) $errors[] = "Id is required";
+      if (!isset($idpost)) $errors[] = "Id is required";
       if (count($errors) > 0) {
         return ["status" => "fallo", "error" => $errors];
       }
-        $idusuario = $request["codigo"];
-        $idpost    = $request["idpost"];
+        //$idusuario = $request["codigo"];
+        //$idpost    = $request["idpost"];
         $videos =DB::table('wp_postmeta as a')
                      ->select('a.meta_id','a.post_id','a.meta_key','a.meta_value')
                      ->where('a.post_id',$idpost)

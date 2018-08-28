@@ -31,4 +31,4 @@ Route::get('del_favorito','api\VideosController@del_favorito');
 Route::post('add_dowl','api\VideosController@add_dowl');
 Route::get('cons_favorito', 'api\VideosController@cons_favorito');
 Route::get('historial', 'api\VideosController@cons_dowl');
-Route::post('mostrar','api\VideosController@buscar');
+Route::get('mostrar/idpost','api\VideosController@buscar');
