@@ -28,8 +28,11 @@ Route::post('add_favorito','api\VideosController@add_favorito');
 Route::post('bloqueo','api\VideosController@bloqueo');
 Route::post('add_tarde','api\VideosController@add_tarde');
 Route::get('del_favorito','api\VideosController@del_favorito');
+Route::get('del_tarde','api\VideosController@del_tarde');
+
 Route::post('add_dowl','api\VideosController@add_dowl');
 Route::get('cons_favorito', 'api\VideosController@cons_favorito');
+Route::get('cons_tarde', 'api\VideosController@cons_tarde');
 Route::get('historial', 'api\VideosController@cons_dowl');
 //Route::get('mostrar/idpost','api\VideosController@buscar');
 Route::get('mostrar/{id}', 'api\VideosController@buscar');

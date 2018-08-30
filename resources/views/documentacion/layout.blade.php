@@ -69,6 +69,8 @@
               <li><a href="#descarga">Descarga</a></li>
               <li><a href="#historial">Historial</a></li>
               <li><a href="#ver">Ver más tarde</a></li>
+              <li><a href="#const">Consultar Ver más tarde</a></li>
+              <li><a href="#delt">Eliminar Ver más tarde</a></li>
               <li><a href="#bloqueo">Bloqueo</a></li>
               <li><a href="#cambiar">Cambiar Contraseña</a></li>
             </ul>
@@ -155,7 +157,7 @@
             <p class="lead">Ruta:/api/consulta_videos</p>
             <p class="lead">Método => "GET"</p>
             <p class="lead">Exito => array ('id', 'titulo',
-                'descripcion', 'url','img','capitulo', 'categoria:array['idc','name']')</p>
+                'descripcion', 'url','url2','img','capitulo', 'categoria:array['idc','name']')</p>
           </div>
 
           <div class="col-lg-8 mx-auto">
@@ -242,8 +244,33 @@
             <p>Nota: El codigo, es el id de usuario, cuando ingresas a la app, y el id se envia en el json de videos</p>
 
           </div>
+       <div class="col-lg-8 mx-auto">
+            <h2 id="consultaf">Consultar Ver Más Tarde</h2>
+            <p class="lead">Nombre de Endpoint: cons_tarde</p>
+            <p class="lead">Ruta:/api/cons_tarde</p>
+           <p class="lead">Método => "GET"</p>
+            <p class="lead">Parámetros => array(
+                "codigo" => "integer/ requerido"),
+                "Éxito" => "id, titulo, idusuario",
+                "Falla" => array(
+                "error" => array("Error en validación de datos")
+            )</p>
+            <p>Nota: El codigo, es el id de usuario,  cuando ingresas a la app</p>
+          </div>
 
-
+         <div class="col-lg-8 mx-auto">
+            <h2 id="delete">Eliminar Ver Más Tarde</h2>
+            <p class="lead">Nombre de Endpoint: del_tarde</p>
+            <p class="lead">Ruta:/api/del_tarde</p>
+           <p class="lead">Método => "GET"</p>
+            <p class="lead">Parámetros => array(
+                "codigo" => "integer/ requerido", "id" => "integer/ requerido"),
+                "Éxito" => "token, idusuario, codigo",
+                "Falla" => array(
+                "error" => array("Error en validación de datos")
+            )</p>
+            <p>Nota: El codigo, es el id de usuario,  cuando ingresas a la app, y el id se envia en el json de videos</p>
+          </div>
           <div class="col-lg-8 mx-auto">
             <h2 id="ver">Bloqueo</h2>
             <p class="lead">Nombre de Endpoint: bloqueo</p>

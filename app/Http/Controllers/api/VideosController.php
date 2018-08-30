@@ -347,7 +347,7 @@ public function cons_dowl(Request $request)
        $errors[] = "Already registered";
        return ["status" => "fallo", "error" => $error];
      }else{
-      $nuevo             = new favorite($request->all());
+      $nuevo             = new tarde($request->all());
       $nuevo->wp_user_id =  $idusuario;
       $nuevo->wp_post_id =  $idpost;
       $nuevo->save();
@@ -358,6 +358,85 @@ public function cons_dowl(Request $request)
     return ['estatus' => 'fallo','error'=>["An error has occurred, try again"]];
   }
 }
+
+
+public function cons_tarde(Request $request)
+{
+  try{
+    $errors = [];
+    if (!isset($request["codigo"])) $errors[] = "Codigo is required";
+
+
+    if (count($errors) > 0) {
+      return ["status" => "fallo", "error" => $errors];
+    }
+    $idusuario = ($request["codigo"]);
+
+    $tarde = tarde::where("wp_user_id",$idusuario)->get();
+
+    if($tarde)
+    {
+
+      $data=[];
+      foreach ($tarde as $video) {
+
+       $entrada = DB::table('wp_posts')
+       ->where('id',$video->wp_post_id)->first();         
+       $data[]=[
+        'id' => $video->wp_post_id,
+        'titulo' => $entrada->post_title,
+        'idusuario' => $video->wp_user_id
+      ];
+    }
+    return ["status"=>'exito', 'data' => $data];
+
+  }else{
+   $errors[] = "Not registered";
+   return ["status" => "fallo", "error" => $error];
+
+ }
+
+}catch(Exception $e){
+  return ['estatus' => 'fallo','error'=>["An error has occurred, try again"]];
+}
+}
+
+
+public function del_tarde(Request $request)
+{
+  try{
+    $errors = [];
+    if (!isset($request["codigo"])) $errors[] = "Codigo is required";
+    if (!isset($request["id"])) $errors[] = "Id is required";
+    $idusuario = ($request["codigo"]);
+
+    if($idusuario==0){
+      $errors[] = "Codigo is required";
+    }
+
+    if (count($errors) > 0) {
+      return ["status" => "fallo", "error" => $errors];
+    }
+
+
+    $idpost    = $request["id"];
+    $tarde = tarde::where("wp_user_id",$idusuario)->where("wp_post_id",$idpost)->first();
+    if($favorite)
+    {
+     $tarde->delete();
+     return ["status" => "exito,", "data" => ["token" => crea_token($idusuario), "id" => $idpost, "codigo" => $idusuario]];
+   }
+
+ }catch(Exception $e){
+  return ['estatus' => 'fallo','error'=>["An error has occurred, try again"]];
+}
+}
+
+
+
+
+
+
 
 public function bloqueo(Request $request)
 {
