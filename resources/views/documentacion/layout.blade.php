@@ -245,7 +245,7 @@
 
           </div>
        <div class="col-lg-8 mx-auto">
-            <h2 id="consultaf">Consultar Ver Más Tarde</h2>
+            <h2 id="const">Consultar Ver Más Tarde</h2>
             <p class="lead">Nombre de Endpoint: cons_tarde</p>
             <p class="lead">Ruta:/api/cons_tarde</p>
            <p class="lead">Método => "GET"</p>
@@ -259,7 +259,7 @@
           </div>
 
          <div class="col-lg-8 mx-auto">
-            <h2 id="delete">Eliminar Ver Más Tarde</h2>
+            <h2 id="delt">Eliminar Ver Más Tarde</h2>
             <p class="lead">Nombre de Endpoint: del_tarde</p>
             <p class="lead">Ruta:/api/del_tarde</p>
            <p class="lead">Método => "GET"</p>

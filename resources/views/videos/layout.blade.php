@@ -1,13 +1,5 @@
  
- <?php 
- //echo $url;
-
-//echo $zurl;
- //echo html_entity_decode($url)?>
-
-
-
- <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en" style="height: 100%">
 <head>
 	<meta charset="UTF-8">
@@ -51,7 +43,7 @@
 			<div id="banner" class="" style="position: absolute; text-align: center; width: 100%; height: 100%">
 				<div class="col-xs-3"></div>
 				<div class="col-xs-6" style="height: 100%" >
-					<video onclick="window.open('https://www.hentaipros.com/landing/tgp3/?ats=eyJhIjoxNjM2NTQsImMiOjUyOTA5NjEwLCJuIjoyNSwicyI6MjI4LCJlIjo3NzY1LCJwIjoxMX0=','_blank');" class="img-responsive" autoplay="" loop="" poster="" src="https://animeidhentai.com/videos/hentai2.mp4" type="video/mp4" width="200" height="250" style="margin-top: auto; margin-bottom: auto; height: 100%; width: 100%"></video>
+					<iframe width="300" scrolling="no" height="250" frameborder="0" src="https://ads2.contentabc.com/ads?spot_id=6564695&rand=1492893455" allowtransparency="true" marginheight="0" marginwidth="0" name="spot_id_6564695"> </iframe>
 					<div class="" style="margin-top: -25%">
 						<a class="skip" href="#" title="">Skip and play</a>
 					</div>

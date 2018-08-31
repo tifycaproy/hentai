@@ -421,7 +421,7 @@ public function del_tarde(Request $request)
 
     $idpost    = $request["id"];
     $tarde = tarde::where("wp_user_id",$idusuario)->where("wp_post_id",$idpost)->first();
-    if($favorite)
+    if($tarde)
     {
      $tarde->delete();
      return ["status" => "exito,", "data" => ["token" => crea_token($idusuario), "id" => $idpost, "codigo" => $idusuario]];
