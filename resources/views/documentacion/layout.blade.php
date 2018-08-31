@@ -63,6 +63,7 @@
               <li><a href="#perfil">Perfil</a></li>
               <li><a href="#reenviar">Reenviar Pin de Confirmación</a></li>
               <li><a href="#consultar">Consultar Videos</a></li>
+              <li><a href="#vervideo">Ver Videos</a></li>
               <li><a href="#crear">Crear Favoritos</a></li>
               <li><a href="#consultaf">Consultar Favoritos</a></li>
               <li><a href="#delete">Eliminar Favoritos</a></li>
@@ -159,6 +160,21 @@
             <p class="lead">Exito => array ('id', 'titulo',
                 'descripcion', 'url','url2','img','capitulo', 'categoria:array['idc','name']')</p>
           </div>
+
+          <div class="col-lg-8 mx-auto">
+            <h2 id="videos">Consultar Video</h2>
+            <p class="lead">Nombre de Endpoint: mostrar video</p>
+            <p class="lead">Ruta:/api/mostrar</p>
+            <p class="lead">Método => "GET"</p>
+            <p class="lead">Parámetros => array(
+                "id" => "integer / requerido / único")
+                "Exito => Webview de videos"
+                "Falla" => array(
+                "error" => array("Error en validación de datos", "Usuario o password incorrectos")
+            )</p>
+
+          </div>
+
 
           <div class="col-lg-8 mx-auto">
             <h2 id="crear">Crear Favorito</h2>
