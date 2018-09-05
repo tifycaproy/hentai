@@ -49,7 +49,7 @@
 				<li><a data-toggle="pill" href="#option2">Option 2</a></li>
 			</ul>
 
-			<div id="banner" class="" style="position: absolute; text-align: center; width: 100%; height: 100%; padding-top: 10px">
+			<!--<div id="banner" class="" style="position: absolute; text-align: center; width: 100%; height: 100%; padding-top: 10px">
 				<div class="" style="" >
 					<iframe width="300" scrolling="no" height="250" frameborder="0" src="https://ads2.contentabc.com/ads?spot_id=6564695&rand=1492893455" allowtransparency="true" marginheight="0" marginwidth="0" name="spot_id_6564695"> </iframe>
 					<div class="" style="margin-top: 10px">
@@ -57,7 +57,7 @@
 					</div>
 				</div>
 					
-			</div>
+			</div>-->
 
 			<div class="tab-content" style="height: 100%">
 				<div id="option1" class="tab-pane fade in active">
