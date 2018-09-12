@@ -91,7 +91,7 @@ class VideosController extends Controller
             $zzurl2 = $url2;
           }
         else{
-          $url2="";
+          $zzurl2="";
         } 
             //obtener categoria
 
