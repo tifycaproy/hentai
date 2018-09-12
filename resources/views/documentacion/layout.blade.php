@@ -74,6 +74,7 @@
               <li><a href="#delt">Eliminar Ver más tarde</a></li>
               <li><a href="#bloqueo">Bloqueo</a></li>
               <li><a href="#cambiar">Cambiar Contraseña</a></li>
+              <li><a href="#recuperar">Recuperar Contraseña</a></li>
             </ul>
           </div>
         </div>
@@ -321,6 +322,31 @@
 
         </div>
       </div>
+
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 id="cambiar">Recuperar contraseña</h2>
+            <p class="lead">Nombre de Endpoint: recuperar</p>
+            <p class="lead">Ruta:/api/recuperar</p>
+            <p class="lead">Método => "POST"</p>
+            <p class="lead">Parámetros => array(
+                "email" => "varchar(100) / requerido / único",
+                "pass_new" => "varchar(20) / requerido",),
+                "Éxito" => "token, idusuario, codigo",
+                "Falla" => array(
+                "error" => array("Error en validación de datos", "El email no se encuentra registrado, Password Incorrecto")
+        )</p>
+
+          </div>
+
+
+        </div>
+      </div>
+
+
+
     </section>
 
 

@@ -214,5 +214,40 @@ $name    = $usuario->name;
 return ["status" => "exito", "data" => ["email" => $email, "name" => $name]];
 }
 
+public function recuperar(Request $request)
+{
+     try {
+       $errors = [];
+       if (!isset($request["email"])) $errors[] = "Email is required";
+       if (!isset($request["pass_new"])) $errors[] = "New Password is required";
+       if (count($errors) > 0) {
+        $result = ["status" => "fallo", "error" => $errors];
+        return $result;
+      }
+                //fin validaciones
+      $email      = $request["email"];
+      $passn = password_hash($request["pass_new"], PASSWORD_DEFAULT);
+      
+      $usuario = Usuario::where('email', $email)->first();
+      if($usuario) {
+          $usuario->password = $passn;  
+          $usuario->save(); 
+          $result = ["status" => "exito", "data" => ["token" => crea_token($usuario->id), "codigo" => codifica($usuario->id), "idusuario" => $usuario->id] ];
+            //$usuario->update(['estatus' => '1']);
+          return $result;
+        }  
+      else{
+        $errors[] = "Email is invalid";
+        if (count($errors) > 0) {
+          $result = ["status" => "fallo", "error" => $errors];
+          return $result;
+        }
+      }
+
+    } catch (Exception $e) {
+      return ['status' => 'fallo', 'error' => ["An error has occurred, try again"]];
+    }
+}
+
 }
 

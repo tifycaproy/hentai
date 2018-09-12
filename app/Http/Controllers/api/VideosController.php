@@ -56,13 +56,13 @@ class VideosController extends Controller
   {
 
     try{
-      $fecha = '2017-12-31';
+      
       $zzvideos= DB::table('wp_postmeta as a')
       ->join('wp_posts as b','a.post_id','=','b.ID') 
       ->select('a.meta_id','a.post_id','a.meta_key','a.meta_value','b.post_title','b.post_status','b.post_name','b.post_content','b.id','b.post_date')
       ->where('a.meta_key', 'like', 'player_0_embed_player')
-      ->where('b.post_date','>',$fecha)
       ->whereIn('b.post_status',['publish','inherit'])
+      
       ->orderby('a.post_id')
       //->take('50')
       ->get();         
@@ -95,14 +95,24 @@ class VideosController extends Controller
         } 
             //obtener categoria
 
-        $categoria =db::table('wp_term_relationships as a')
-        ->join('wp_terms as b','a.term_taxonomy_id','=','b.term_id')
-        ->select('b.term_id as idc', 'b.name as nombre')
-        ->where('a.object_id',$video->id)
-        ->get();
+        
         $url = $video->meta_value;
         $purl = $url;
         $descarga = "";
+        $categoria =db::table('wp_term_relationships as a')
+        ->join('wp_terms as b','a.term_taxonomy_id','=','b.term_id')
+        ->select('b.term_id as idc', 'b.name as nombre','b.slug')
+        ->whereIn('b.slug',['uncesored','2018'])
+        ->where('a.object_id',$video->id)
+        ->get();
+        $x=0;
+        
+        foreach($categoria as $categ)
+        {
+          $x++;
+        }
+          
+        
         //preg_match('/src="([^"]+)"/', $video->meta_value, $match);
         
         //$salida = $video->meta_value;
@@ -129,6 +139,7 @@ class VideosController extends Controller
           //else $descarga='';          
         //}
                    //dd($categoria);
+        if($x>0){
         $data[]=[
           'id' => $video->post_id,
           'titulo' => $video->post_title,
@@ -140,6 +151,7 @@ class VideosController extends Controller
           'capitulo' => $capitulo,
           'categorias' => $categoria
         ];
+        }
       }
     //                    'video' => config('app.url') . 'videosvr/' . $video->video,
       return ["status"=>'exito', 'data' => $data];
