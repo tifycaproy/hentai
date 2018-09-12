@@ -102,7 +102,7 @@ class VideosController extends Controller
         $categoria =db::table('wp_term_relationships as a')
         ->join('wp_terms as b','a.term_taxonomy_id','=','b.term_id')
         ->select('b.term_id as idc', 'b.name as nombre','b.slug')
-        ->whereIn('b.slug',['uncesored','2018'])
+        ->whereIn('b.name',['2018','Uncensored'])
         ->where('a.object_id',$video->id)
         ->get();
         $x=0;
