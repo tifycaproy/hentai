@@ -20,6 +20,7 @@ Route::post('registro', 'api\UsuarioController@registro');
 
 Route::post('ingresar', 'api\UsuarioController@iniciar');
 Route::post('cambiar', 'api\UsuarioController@cambiar');
+Route::post('recuperar', 'api\UsuarioController@recuperar');
 Route::post('validar', 'api\UsuarioController@validar_pin');
 Route::get('perfil', 'api\UsuarioController@perfil');
 Route::post('reenviar_pin','api\UsuarioController@reenviar_pin');
