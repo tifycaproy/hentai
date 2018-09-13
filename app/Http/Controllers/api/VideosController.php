@@ -16,8 +16,9 @@ use App\tarde;
 
 class VideosController extends Controller
 {
+ 
    public function buscar($idpost)
-  {
+   {
 
     try{
       $errors = [];
@@ -59,7 +60,7 @@ class VideosController extends Controller
       $fecha = '2017-12-31';
       $zzvideos= DB::table('wp_postmeta as a')
       ->join('wp_posts as b','a.post_id','=','b.ID') 
-      ->select('a.meta_id','a.post_id','a.meta_key','a.meta_value','b.post_title','b.post_status','b.post_name','b.post_content','b.id','b.post_date')
+      ->select('a.meta_id','a.post_id','a.meta_key','a.meta_value','b.post_title','b.post_status','b.post_name','b.post_content','b.id','b.post_date','b.guid')
       ->where('a.meta_key', 'like', 'player_0_embed_player')
       ->where('b.post_date','>',$fecha)
       ->whereIn('b.post_status',['publish','inherit'])
@@ -75,6 +76,7 @@ class VideosController extends Controller
 
         if($imagen) $img = $imagen->meta_value;
         else $img="";
+        if($img=="") $img=$video->guid;
             //obtener capitulo
         $episodio = DB::table('wp_postmeta')
         ->where('meta_key','like','wpk_episode')->where('post_id',$video->post_id)->first();
