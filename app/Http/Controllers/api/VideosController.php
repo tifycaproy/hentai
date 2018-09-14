@@ -76,7 +76,10 @@ class VideosController extends Controller
 
         if($imagen) $img = $imagen->meta_value;
         else $img="";
-        if($img=="") $img=$video->guid;
+        if($img==""){
+          $timagen = db::table('wp_posts')->where('post_parent',$video->post_id)->where('post_mime_type','like','image/jpeg%')->first();
+          if($timagen) $img = $timagen->guid;
+        } 
             //obtener capitulo
         $episodio = DB::table('wp_postmeta')
         ->where('meta_key','like','wpk_episode')->where('post_id',$video->post_id)->first();
