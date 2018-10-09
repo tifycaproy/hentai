@@ -55,7 +55,6 @@ class VideosController extends Controller
 
   public function consulta_video()
   {
-
     try{
       $fecha = '2017-12-31';
       $zzvideos= DB::table('wp_postmeta as a')
