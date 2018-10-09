@@ -64,7 +64,7 @@ class VideosController extends Controller
       ->where('a.meta_key', 'like', 'player_0_embed_player')
       ->where('b.post_date','>',$fecha)
       ->whereIn('b.post_status',['publish','inherit'])
-      ->orderby('a.post_date','DESC')
+      ->orderby('b.post_date','DESC')
       //->take('50')
       ->get();         
 
