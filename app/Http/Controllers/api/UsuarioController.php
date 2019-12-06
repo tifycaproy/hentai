@@ -250,4 +250,3 @@ public function recuperar(Request $request)
 }
 
 }
-
